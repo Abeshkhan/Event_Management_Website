@@ -1,0 +1,28 @@
+<%- include('./partials/header', {name, is_admin}) %>
+  <main class='container d-flex justify-content-center align-items-center w-50 h-50 pt-5'>
+    <form action='/signin' method="POST" class='container' style='width: 20rem'>
+      <h3 class='text-center mb-4'>SIGN IN</h3>
+      <% if (locals.type, locals.message) { %>
+        <div class="alert alert-<%= type %>" role="alert">
+          <div class="alert-message" align="center">
+            <strong>
+              <%= message %>
+            </strong>
+          </div>
+        </div>
+        <% } %>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" id="username">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="password">
+          </div>
+          <div class="col-auto">
+            <input type="submit" value="Sign in" class="btn btn-primary mb-3 w-100">
+            <div class='float-end'> or, <a href="/registration">Register new account</a></div>
+          </div>
+          </section>
+  </main>
+  <%- include('./partials/end'); %>

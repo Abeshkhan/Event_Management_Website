@@ -1,0 +1,33 @@
+{
+  "name": "eventingo",
+  "version": "1.0.0",
+  "description": "How to run the app:",
+  "main": "./index.js",
+  "author": "Abesh",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "jest --verbose"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.8"
+  },
+  "devDependencies": {
+    "jest": "^28.0.1",
+    "supertest": "^6.2.2"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "mehrab"
+  },
+  "keywords": [
+    "470project"
+  ]
+}

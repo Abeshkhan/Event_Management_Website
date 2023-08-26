@@ -1,0 +1,40 @@
+<header
+    class='bg-white d-flex justify-content-between align-items-center py-2 px-4 w-100 position-fixed top-0 shadow-sm'
+    style='z-index: 10;'>
+    <section>
+        <a style='color: black; font-size: 1.3rem; text-decoration: none; font-family:  monospace'
+            href='/'><b>Eventingo</b></a>
+    </section>
+    <nav class='nav align-items-center'>
+        <% if (!name) { %>
+            <a class='nav-link' href='/signin'>Sign In</a>
+            <a class='nav-link' href='/registration'>Register</a>
+            <% } else if (is_admin) { %>
+                <a class='nav-link' href='/account'><b class='badge bg-primary' style='font-family:  monospace'>
+                        <%= name %>
+                    </b></a>
+                <a class='nav-link' href='/order/admin'>Orders</a>
+                <a class='nav-link' href='/addproduct'>Add Product</a>
+                <a class='nav-link' href='/signout'>Sign out</a>
+                <% } else {%>
+                    <a class='nav-link' href='/account'><b class='badge bg-primary' style='font-family:  monospace'>
+                            <%= name %>
+                        </b></a>
+                    <a class='nav-link' href='/home'>Home</a>
+                    <a class='nav-link' href='/order/status'>Status</a>
+                    <a class='nav-link' href='/cart'>Cart</a>
+                    <a class='nav-link' href='/signout'>Sign out</a>
+                    <% } %>
+    </nav>
+
+</header>
+
+<img src="https://www.premiumline-cabling.com/wp-content/uploads/2020/02/PL_img_event_Bangladesh_event5.jpg?fbclid=IwAR1haBeBayI1mO_n-JuZZppNhhJVhlEIViz4qUk0qY80X5zMjbiR8G951-c"
+    style="width: 100%;height: 60%;position: relative;" alt="">
+
+<h1 style="position: absolute;position: absolute;
+top: 250;
+left: 900;
+color: white;
+font-size: 6rem;
+font-style: italic;"> Eventingo</h1>

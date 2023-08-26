@@ -1,0 +1,95 @@
+<%- include('./partials/header', {name, is_admin}); %>
+  <main class='d-flex gap-2 pt-5 mt-5 justify-content-between container'>
+    <section class="p-0" style='width: 40rem;'>
+      <h1 class='mb-4 display-6'>Products</h1>
+      <% for(let i=0; i < store.length; i++) { %>
+        <h5 class='ms-3 mb-3 text-muted'>Service: <%= store[i].service %>
+        </h5>
+        <table class='table table-bordered table-striped table-hover'>
+          <thead>
+            <tr>
+              <th scope="col" style='max-width: 2rem;'></th>
+              <th scope="col">Product</th>
+              <th scope="col" class='text-end'>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let j=0; j < store[i].items.length; j++) { %>
+              <tr>
+                <th scope="row" style='max-width: 2rem;'>
+                  <%= j + 1 %>
+                </th>
+                <td>
+                  <%= store[i].items[j].name %>
+                </td>
+                <td class='text-end'>
+                  <%= store[i].items[j].price %> ৳
+                </td>
+                <td>
+                  <form method="POST" action="/removeproduct">
+                    <input type="hidden" name="prod_id" value="<%= store[i].id %>">
+                    <input type="hidden" name="item_id" value="<%= store[i].items[j].id %>">
+                    <button>Remove</button>
+                  </form>
+
+                </td>
+              </tr>
+              <% } %>
+          </tbody>
+        </table>
+        <% } %>
+    </section>
+
+    <section style='width: 35rem;'>
+      <h1 class='mb-4 display-6'>Add Product</h1>
+      <div class="card px-4 py-3">
+
+        <form action="/addproduct" method='post'>
+          <div class="mb-3">
+            <label for="service" class="form-label fs-6">Service</label>
+            <select class="form-select" name='service'>
+              <option selected disabled>Choose Service</option>
+              <% for(let i=0; i < store.length; i++) { %>
+                <option value="<%= store[i].id %>">
+                  <%= store[i].service %>
+                </option>
+                <% } %>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label fs-6">Image</label>
+            <input type="text" class="form-control" name="image" id="image" placeholder="http://some.website/image.png">
+          </div>
+
+          <div class="mb-3">
+            <label for="name" class="form-label fs-6">Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Product Name...">
+          </div>
+
+          <div class="mb-3">
+            <label for="price" class="form-label fs-6">Price</label>
+            <input type="number" class="form-control" name="price" id="price" placeholder="price...">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label fs-6">Description</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+          </div>
+          <input type="submit" class="btn btn-primary float-end" value='Add Product'>
+      </div>
+      </form>
+      <h1 class='mb-4 mt-4 display-6'>Add Service</h1>
+      <div class="card px-4 py-3">
+        <form action="/addservice" method='post'>
+          <div class="mb-3">
+            <label for="service" class="form-label fs-6">Name</label>
+            <input type="text" class="form-control" name="service" id="service" placeholder="Service Name...">
+          </div>
+          <input type="submit" class="btn btn-primary float-end" value='Add Service'>
+      </div>
+      </form>
+    </section>
+  </main>
+  <div id='toastContainer' class="position-fixed bottom-0 end-0 p-3 d-flex flex-column gap-2" style="z-index: 11">
+
+    <%- include('./partials/end'); %>

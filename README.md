@@ -18,3 +18,7 @@ How to run the app:
 
     npm test
 
+    to run
+
+    npm start
+
